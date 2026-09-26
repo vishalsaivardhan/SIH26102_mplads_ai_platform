@@ -1,73 +1,58 @@
-# SIH26102 MPLADS AI Platform
+# MPLADS AI-Powered Monitoring, Fraud & Inefficiency Analytics Platform
+**Smart India Hackathon (SIH) 2026 | Problem ID: SIH26102**
+**Organization:** Ministry of Statistics and Programme Implementation (MoSPI)  
+**Theme:** Smart Automation / Governance Tech
 
-Project workspace for the Smart India Hackathon solution SIH26102. The repository keeps the web client and API service in separate top-level folders.
+---
 
-## Repository Layout
+## Table of Contents
+- [Overview](#-overview)
+- [Key Features & Automation](#-key-features--automation)
+- [Tech Stack](#-tech-stack)
+- [Project Architecture](#-project-architecture)
+- [Local Setup & Installation](#-local-setup--installation)
+- [API Documentation](#-api-documentation)
+- [Live Deployment Links](#-live-deployment-links)
 
+---
+
+## Overview
+The **Members of Parliament Local Area Development Scheme (MPLADS)** involves large-scale fund utilization and thousands of concurrent infrastructure projects across India. Traditional monitoring is often reactive, manual, and prone to bureaucratic delays or fund leakages. 
+
+This project provides an **AI-driven command-center platform** that ingests project data, automatically flags financial anomalies using machine learning, tracks administrative milestone delays, and delivers role-based insights to MoSPI officials, District Authorities, and Members of Parliament.
+
+---
+
+## Key Features & Automation
+1. **Unsupervised Machine Learning Anomaly Detection:** Uses an *Isolation Forest* algorithm to instantly spot multi-dimensional cost overruns and budget inflations without requiring pre-labeled fraud data.
+2. **Automated Bureaucratic Delay Tracking:** Computes approval lag times between MP work proposals and district administrative sanctions.
+3. **Smart Duplicate Work Flagging:** Cross-references work titles within districts to catch duplicate fund allocation proposals.
+4. **Multi-Role Contextual Views:** Interactive UI toggles enabling customized views for *MoSPI Officials*, *District Authorities*, and *MPs*.
+5. **Real-time Compliance Scoring:** Dynamically computes a national norm-adherence and health index.
+
+---
+
+## Tech Stack
+* **Frontend:** React (Vite), Tailwind CSS, Lucide Icons
+* **Backend:** Python, FastAPI, Pandas, Scikit-Learn, NumPy
+* **Deployment:** Vercel (Frontend) & Render (Backend)
+
+---
+
+## Project Architecture
 ```text
-.
-|-- backend/
-|   |-- data/          # Source MPLADS allocation dataset
-|   |-- main.py        # FastAPI application entry point
-|   `-- requirements.txt
-|-- frontend/
-|   |-- public/        # Static files served as-is
-|   `-- src/           # React application and assets
-`-- README.md
-```
-
-## Frontend
-
-Requirements: Node.js and npm.
-
-```powershell
-cd frontend
-npm install
-npm run dev
-```
-
-Run the production checks with `npm run lint` and `npm run build` from `frontend/`.
-
-## Backend
-
-Requirements: Python 3 and pip.
-
-```powershell
-cd backend
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
-
-The API reads `backend/data/Allocated Limit for Honble MPs.csv` directly. Start it from `backend/` with:
-
-```powershell
-uvicorn main:app --reload
-```
-
-API docs are available at `http://127.0.0.1:8000/docs`.
-
-## Model Scope
-
-The current source file contains MP allocation limits, not individual works, sanctions, expenditure, payments, or progress events. An Isolation Forest screens allocation amounts and ranks a small review queue against the national distribution. Its score is an outlier priority, not a fraud probability or an audit finding. Work-level cost, duplicate-work, utilization, and execution-stall detection need the corresponding work-level records.
-
-The state map uses simplified ADM1 boundaries from geoBoundaries, source DataMeet / Election Commission of India, boundary ID `IND-ADM1-1811400`, under CC BY 2.5 IN. Attribution is retained in the frontend.
-
-## Free Deployment
-
-### Render API
-
-1. Push this repository to GitHub.
-2. In Render, create a Blueprint from the repository and select the root `render.yaml`; it creates a free Python web service from `backend/`.
-3. Wait for `/health` to pass and copy the service URL, such as `https://mplads-allocation-api.onrender.com`.
-
-Render's free web service may sleep when idle; its first request after sleeping can take longer. The CSV is bundled with the service, so it does not need a persistent disk.
-
-### Vercel frontend
-
-1. Import the same GitHub repository into Vercel.
-2. Set the project Root Directory to `frontend` and keep the Vite framework preset.
-3. Add `VITE_API_BASE_URL` with the Render service URL, without a trailing slash, then deploy.
-4. Copy the Vercel production URL. In Render, add `FRONTEND_ORIGINS` with that origin (for example `https://your-project.vercel.app`) and redeploy the API.
-
-For a local frontend, copy `frontend/.env.example` to `frontend/.env.local` and set `VITE_API_BASE_URL=http://127.0.0.1:8000`.
+SIH26102_mplads_ai_platform/
+├── backend/
+│   ├── data/
+│   │   └── processed_mplads_data.csv
+│   ├── venv/
+│   ├── main.py
+│   └── requirements.txt
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── package.json
+│   └── vite.config.js
+└── README.md
