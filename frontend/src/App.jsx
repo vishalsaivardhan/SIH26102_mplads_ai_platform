@@ -25,7 +25,7 @@ import {
 import './App.css'
 import './Allocation.css'
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000').replace(/\/$/, '')
+const API_BASE_URL = "https://mplads-backend-ebjd.onrender.com";
 const MAP_URL = '/india-state-risk.geojson'
 const PAGE_SIZE = 10
 const CURRENCY = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })
