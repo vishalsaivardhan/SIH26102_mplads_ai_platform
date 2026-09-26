@@ -1,0 +1,75 @@
+.scope-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: -10px 0 16px;
+  padding: 11px 13px;
+  color: #76552d;
+  border: 1px solid #ead8b8;
+  border-left: 3px solid #cc8a3f;
+  border-radius: 5px;
+  background: #fffaf0;
+  font-size: 10px;
+  line-height: 1.55;
+}
+.scope-notice svg { flex: 0 0 auto; margin-top: 1px; }
+.scope-notice strong { color: #644522; }
+.insight-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(270px, .8fr); gap: 14px; margin-bottom: 15px; }
+.map-panel, .state-panel { min-height: 0; padding: 18px; }
+.map-caption { margin-top: 8px; color: #869189; font-size: 10px; }
+.india-map { display: block; width: 100%; height: auto; max-height: 435px; margin: 4px auto 0; overflow: visible; }
+.state-shape { stroke: #fff; stroke-width: 1.1px; vector-effect: non-scaling-stroke; cursor: pointer; transition: fill .16s ease, stroke .16s ease, opacity .16s ease; }
+.state-shape:hover, .state-shape:focus-visible { stroke: #213e30; stroke-width: 2.3px; outline: none; }
+.state-shape.map-clear { fill: #9fcdb2; }
+.state-shape.map-watch { fill: #eac16c; }
+.state-shape.map-high { fill: #d98262; }
+.state-shape.map-no-data { fill: #e5e9e5; }
+.state-shape.map-selected { stroke: #244c37; stroke-width: 2.8px; }
+.map-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 15px; padding: 8px 0 2px; color: #77847b; font-size: 9px; }
+.map-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.map-legend i, .state-swatch { display: inline-block; width: 9px; height: 9px; border-radius: 2px; }
+.legend-clear, .state-swatch.map-clear { background: #9fcdb2; }
+.legend-watch, .state-swatch.map-watch { background: #eac16c; }
+.legend-high, .state-swatch.map-high { background: #d98262; }
+.legend-no-data, .state-swatch.map-no-data { background: #e5e9e5; }
+.map-attribution { margin: 8px 0 0; color: #9aa39d; font-size: 8px; text-align: center; }
+.map-error, .map-loading { display: grid; min-height: 220px; place-items: center; color: #8d9890; font-size: 11px; }
+.map-loading-compact { min-height: 110px; }
+.alert-total { flex: 0 0 auto; }
+.state-list { max-height: 376px; overflow-y: auto; margin-top: 12px; }
+.state-review-row { width: 100%; min-width: 0; display: flex; align-items: center; gap: 9px; padding: 10px 2px; color: #637168; border: 0; border-bottom: 1px solid #eff2ef; background: transparent; text-align: left; cursor: pointer; }
+.state-review-row:hover { background: #f8faf8; }
+.state-swatch { flex: 0 0 auto; width: 8px; height: 28px; border-radius: 3px; }
+.state-review-name { min-width: 0; flex: 1; display: grid; gap: 3px; }
+.state-review-name strong { overflow: hidden; color: #405249; font-size: 10px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+.state-review-name small, .state-review-count small { color: #8d9891; font-size: 9px; }
+.state-review-count { display: grid; gap: 3px; text-align: right; }
+.state-review-count strong { color: #9a5837; font-family: var(--mono); font-size: 11px; }
+.state-review-row > svg { flex: 0 0 auto; color: #98a39b; }
+.empty-state { padding: 40px 10px; color: #87938a; font-size: 11px; text-align: center; }
+.register-heading { padding-top: 16px; }
+.allocation-table { min-width: 790px; }
+.risk-clear { color: #46815c; }
+.risk-clear i { background: #64a879; }
+.drawer-risk-high { color: #a85d35; background: #fcf0e6; }
+.review-explanation { margin: 10px 0 0; padding: 10px; color: #765b3e; border: 1px solid #f0e1ca; border-radius: 4px; background: #fffaf2; font-size: 10px; line-height: 1.55; }
+.detail-section .india-map { margin: 3px auto 0; }
+.india-map-compact { max-height: 260px; }
+.drawer-advisory { margin-bottom: 5px; }
+
+@media (max-width: 980px) {
+  .insight-grid { grid-template-columns: minmax(0, 1.05fr) minmax(245px, .95fr); }
+  .map-panel, .state-panel { padding: 15px; }
+  .map-legend { gap: 7px 10px; }
+}
+
+@media (max-width: 720px) {
+  .insight-grid { grid-template-columns: 1fr; }
+  .map-panel { padding: 14px 11px; }
+  .state-panel { padding: 15px; }
+  .state-list { max-height: 280px; }
+  .india-map { max-height: 365px; }
+  .map-legend { gap: 7px 10px; font-size: 8px; }
+  .scope-notice { margin-top: -6px; padding: 10px; font-size: 9px; }
+  .allocation-table { min-width: 760px; }
+}
